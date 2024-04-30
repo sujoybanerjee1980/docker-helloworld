@@ -1,0 +1,60 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:513954133881:task-definition/helloWorldTaskDefiniton:1",
+    "containerDefinitions": [
+        {
+            "name": "helloWorldContainer",
+            "image": "karthequian/helloworld:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "systemControls": []
+        }
+    ],
+    "family": "helloWorldTaskDefiniton",
+    "taskRoleArn": "arn:aws:iam::513954133881:role/helloWorldIAM",
+    "executionRoleArn": "arn:aws:iam::513954133881:role/helloWorldIAM",
+    "networkMode": "awsvpc",
+    "revision": 1,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2024-04-30T16:47:28.728Z",
+    "registeredBy": "arn:aws:iam::513954133881:user/sujoy.banerjee",
+    "tags": []
+}

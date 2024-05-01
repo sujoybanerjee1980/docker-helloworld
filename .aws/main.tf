@@ -1,19 +1,10 @@
-resource "aws_vpc" "default" {
-  provider = aws.us-east-1
-
-  tags                             = merge(var.tags, {})
-  enable_dns_support               = true
-  enable_dns_hostnames             = true
-  enable_classiclink_dns_support   = true
-  enable_classiclink               = true
-  cidr_block                       = var.vpc_cidr
-  assign_generated_ipv6_cidr_block = true
+data "aws_vpc" "selected" {
+  id = var.vpc_id
 }
 
 resource "aws_subnet" "snet1" {
   provider = aws.us-east-1
-
-  vpc_id                  = aws_vpc.default.id
+  vpc_id                  = data.aws_vpc.selected.id
   tags                    = merge(var.tags, {})
   map_public_ip_on_launch = true
   cidr_block              = var.subnets[0]

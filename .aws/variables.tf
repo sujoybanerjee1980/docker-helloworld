@@ -37,7 +37,7 @@ variable "tags" {
 variable "vpc_cidr" {
   description = "CIDR block used by the main VPC."
   type        = string
-  default     = "10.0.0.0/16"
+  default     = "172.30.0.0/16"
 }
 
 variable "workstation-external-cidr" {

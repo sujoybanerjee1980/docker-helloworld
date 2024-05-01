@@ -1,4 +1,4 @@
-resource "aws_vpc" "default" {
+resource "aws_vpc" "default_vpc" {
   provider = aws.us-east-1
 
   tags                             = merge(var.tags, {})
@@ -13,7 +13,7 @@ resource "aws_vpc" "default" {
 resource "aws_subnet" "snet1" {
   provider = aws.us-east-1
 
-  vpc_id                  = aws_vpc.default.id
+  vpc_id                  = aws_vpc.default_vpc.id
   tags                    = merge(var.tags, {})
   map_public_ip_on_launch = true
   cidr_block              = var.subnets[0]
@@ -23,7 +23,7 @@ resource "aws_subnet" "snet1" {
 resource "aws_subnet" "snet2" {
   provider = aws.us-east-1
 
-  vpc_id                  = aws_vpc.default.id
+  vpc_id                  = aws_vpc.default_vpc.id
   tags                    = merge(var.tags, {})
   map_public_ip_on_launch = true
   cidr_block              = var.subnets[1]
@@ -33,7 +33,7 @@ resource "aws_subnet" "snet2" {
 resource "aws_internet_gateway" "gtw" {
   provider = aws.us-east-1
 
-  vpc_id = aws_vpc.default.id
+  vpc_id = aws_vpc.default_vpc.id
 
   tags = {
     Name = "Brainboard k8s"
@@ -44,7 +44,7 @@ resource "aws_internet_gateway" "gtw" {
 resource "aws_route_table" "default" {
   provider = aws.us-east-1
 
-  vpc_id = aws_vpc.default.id
+  vpc_id = aws_vpc.default_vpc.id
   tags   = merge(var.tags, {})
 
   route {
@@ -172,7 +172,7 @@ resource "aws_iam_role_policy_attachment" "cluster-AmazonEKSVPCResourceControlle
 resource "aws_security_group" "cluster-sg" {
   provider = aws.us-east-1
 
-  vpc_id      = aws_vpc.default.id
+  vpc_id      = aws_vpc.default_vpc.id
   tags        = merge(var.tags, {})
   name        = var.sg_name
   description = "Cluster communication with worker nodes"

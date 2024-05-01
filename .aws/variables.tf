@@ -40,6 +40,12 @@ variable "vpc_cidr" {
   default     = "172.30.0.0/16"
 }
 
+variable "vpn-name" {
+  description = "default vpc to use"
+  type        = string
+  default     = "MGN-Demo-VPC"
+}
+
 variable "workstation-external-cidr" {
   type    = string
   default = "0.0.0.0/0"

@@ -37,16 +37,17 @@ variable "tags" {
 variable "vpc_cidr" {
   description = "CIDR block used by the main VPC."
   type        = string
-  default     = "172.30.0.0/16"
+  default     = "10.0.0.0/16"
+}
+
+variable "vpn-name" {
+  description = "default vpc to use"
+  type        = string
+  default     = "MGN-Demo-VPC"
 }
 
 variable "workstation-external-cidr" {
   type    = string
   default = "0.0.0.0/0"
-}
-
-variable "vpc_id" {
-  type    = string
-  default = "default-vpc"
 }
 

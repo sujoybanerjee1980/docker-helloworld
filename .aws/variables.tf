@@ -45,3 +45,8 @@ variable "workstation-external-cidr" {
   default = "0.0.0.0/0"
 }
 
+variable "vpc_id" {
+  type    = string
+  default = "default-vpc"
+}
+
